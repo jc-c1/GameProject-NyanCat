@@ -123,8 +123,8 @@ window.onload = function() {
         game.FloorClass = class {
           //Constructor of floor objects
             constructor(i,j){
-                this.ii = i *75
-                this.y = this.ii + 20 + Math.floor(Math.random() * 18)
+                this.ii = i *65
+                this.y = 10+this.ii + Math.floor(Math.random() * 50)
       
                 this.n = 2 + Math.floor(Math.random() * 6)
                 this.boxlength = 430
@@ -137,6 +137,7 @@ window.onload = function() {
           //
           //Floor Regeneration Parameters
             floorReset() {
+              this.ii = i *65
               //setting n
                 this.n = 2 + Math.floor(Math.random() * 5)
               //setting x based on n
@@ -148,7 +149,7 @@ window.onload = function() {
                 else if (this.n == 3){this.x = 860 + Math.floor(Math.random()*255)}
                 else {this.x = 860 + Math.floor(Math.random()*290)}
               //setting y
-                this.y = this.ii + Math.floor(Math.random() * 30)
+                this.y = 10+this.ii + Math.floor(Math.random() * 50)
               //reset counter
                 this.counter = 860
               //update this.lp
