@@ -1,4 +1,4 @@
-console.log('hi') 
+
 window.onload = function() {
 //SETUP
   //Canvas
@@ -433,12 +433,12 @@ window.onload = function() {
           game.cdFT = setInterval(game.cdCatFloor, 25/9)
         //  setInterval(game.cdCatItem, 25/9)
           game.scoreT = setInterval(function(){game.score += 1
-          console.log('hi')}, 500)
+          }, 500)
           }
         game.clearcdTimer =function() {
           clearInterval(game.cdFT)
           clearInterval(game.scoreT)
-          console.clear()
+          
         }
       //
     //
@@ -464,7 +464,7 @@ window.onload = function() {
       c.drawImage(genButton,240,271,350,130)
   
       c.font = "800 100px Patrick Hand";
-      c.fillStyle = "white"
+      c.fillStyle = "#f4c430"
       c.textAlign = "left";
       c.fillText("P L A Y", 290, 370)
   
@@ -634,7 +634,6 @@ window.onload = function() {
             game.allScorecopy = game.allScores.slice(-10,game.allScores.length)
             for(var i = 0;i < 10; i++){
               game.reverseScore.push(game.allScorecopy.pop())
-              console.log(game.reverseScore)
             }
             game.drawHS()
             canvas.addEventListener('click', game.returnMenu)
@@ -726,13 +725,11 @@ window.onload = function() {
           // Preload
         if (preload) {
           // Add a delay for demonstration purposes -> from internet
-            console.log('preloaded')
+            
             setTimeout(function(){initialized = true},1000);
           }
           } 
 
-          console.log('initialized')
-         
         setTimeout(game.loadMenu,300)
               
     }
