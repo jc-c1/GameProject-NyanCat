@@ -1,11 +1,12 @@
-
 window.onload = function() {
+  
 //SETUP
   //Canvas
       const canvas = document.getElementById('canvas')
       const c = canvas.getContext('2d');
-      const musicOn = document.getElementById("musicOn");
-      const music = document.getElementById("music");
+     
+      
+      
     //
     //Game Declarations
       let game = {}
@@ -25,14 +26,7 @@ window.onload = function() {
       
     //
 //
-//Audio Function
-  function musicOnChange() {
-    musicOn.checked ? music.play() : music.pause();
-    }
-  music.onload = function (){
-  musicOn.addEventListener('change', musicOnChange);}
 
-//
 //Image
   //Preload image global variable declaration and default values
     var loadcount = 0;
