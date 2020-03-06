@@ -488,6 +488,15 @@ window.onload = function() {
       c.clearRect(0,0,850,550)
       c.drawImage(genBG, 0,0, 850 ,550)
       c.drawImage(pgIns, 0,0, 850 ,550)
+      c.font = "800 35px Patrick Hand";
+      c.fillStyle = "white"
+      c.textAlign = "left";
+        
+      c.fillText("Click to Jump", 390, 180)
+      c.fillText("Click 2x to Jump Higer", 390, 230)
+      c.fillText("Items - coming soon!", 390, 335)
+      c.font = "400 20px Patrick Hand";
+      c.fillText("(When I'm not sleep deprived T-T)", 390, 365)
       game.drawBack()
     }
   //
