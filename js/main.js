@@ -4,6 +4,8 @@ window.onload = function() {
   //Canvas
       const canvas = document.getElementById('canvas')
       const c = canvas.getContext('2d');
+      const musicOn = document.getElementById("musicOn");
+      const music = document.getElementById("music");
     //
     //Game Declarations
       let game = {}
@@ -20,9 +22,17 @@ window.onload = function() {
       game.allScores = []
       game.allScorecopy = []
       game.reverseScore = []
+      
     //
 //
+//Audio Function
+  function musicOnChange() {
+    musicOn.checked ? music.play() : music.pause();
+    }
+  music.onload = function (){
+  musicOn.addEventListener('change', musicOnChange);}
 
+//
 //Image
   //Preload image global variable declaration and default values
     var loadcount = 0;
@@ -100,8 +110,17 @@ window.onload = function() {
     }
   //
   
-//
 
+//Mouse Position
+    game.canvasXY = canvas.getBoundingClientRect()
+    
+    game.mouse = function (inputEvt) {
+      game.mouseXY = {
+          x: inputEvt.clientX - game.canvasXY.left, 
+          y: inputEvt.clientY - game.canvasXY.top
+      }
+    }
+//
 //In-Game 
   //Objects Creation and Draw Functions Declaration
     //Cat
@@ -569,16 +588,6 @@ window.onload = function() {
 //
 
 //Game Interface Mapping
-  //Mouse Position
-    game.canvasXY = canvas.getBoundingClientRect()
-    
-    game.mouse = function (inputEvt) {
-      game.mouseXY = {
-          x: inputEvt.clientX - game.canvasXY.left, 
-          y: inputEvt.clientY - game.canvasXY.top
-      }
-    }
-  //
   //Load Screens
     //Menu Functions
       game.removeMenuEL = function() {
@@ -587,11 +596,13 @@ window.onload = function() {
         canvas.removeEventListener('click', game.loadHS)
       }
     //
-    //Load Menu (Upon Refresh)
+    //Load Menu 
       game.loadMenu = function () {
         canvas.addEventListener('click', game.play)
         canvas.addEventListener('click', game.loadIns)
         canvas.addEventListener('click', game.loadHS)
+        
+        
         game.drawMenu()  
         game.score = 0
         game.clearcdTimer() 
@@ -603,6 +614,7 @@ window.onload = function() {
           if (game.mouseXY.x >240 && game.mouseXY.x<590 && game.mouseXY.y>271 && game.mouseXY.y < 401)   {
             game.removeMenuEL() 
             canvas.addEventListener('click', game.catJump)
+            
             
             game.cat = {x: -50,
                         y: -50,
@@ -699,7 +711,6 @@ window.onload = function() {
     //
   //  
 //
-
 //Initializing Game Function
     function init() {  
       if(!initialized) {
@@ -724,7 +735,7 @@ window.onload = function() {
          egCatGrave  = game.imageArr[16]
   
           // Preload
-        if (preload) {
+          if (preload) {
           // Add a delay for demonstration purposes -> from internet
             
             setTimeout(function(){initialized = true},1000);
@@ -732,6 +743,7 @@ window.onload = function() {
           } 
 
         setTimeout(game.loadMenu,300)
+        
               
     }
   
@@ -741,6 +753,9 @@ window.onload = function() {
 
 game.constructFloorObjects()   
 //        game.conttructItemObjects()
+
+
+
 window.addEventListener("resize", function(){game.canvasXY = canvas.getBoundingClientRect()})
 
 init()
