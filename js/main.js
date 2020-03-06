@@ -17,6 +17,9 @@ window.onload = function() {
       game.cdFT = ""
       game.scoreT = ""
       game.catJumpCount = 0;
+      game.allScores = []
+      game.allScorecopy = []
+      game.reverseScore = []
     //
 //
 
@@ -493,10 +496,22 @@ window.onload = function() {
       c.clearRect(0,0,850,550)
       c.drawImage(genBG, 0,0, 850 ,550)
       c.drawImage(pgHS,0,0, 850 ,550)
-          c.font = "800 100px Patrick Hand";
+      
+      
+      
+      for(var i = 0;i < 5; i++){
+          if(this.reverseScore[i]){
+            c.font = "400 45px Patrick Hand";
           c.fillStyle = "white"
           c.textAlign = "left";
-          c.fillText("", 290, 370)
+          c.fillText(`${game.reverseScore[i]}`, 205, 246+49*i)}}
+      for(var i = 5;i < 10; i++){
+        if(this.reverseScore[i]){
+        c.font = "400 45px Patrick Hand";
+          c.fillStyle = "white"
+          c.textAlign = "left";
+            if(this.reverseScore[i]){
+            c.fillText(`${game.reverseScore[i]}`, 500, 246+49*(i-5))}}}
       game.drawBack()
     }
   //
@@ -606,6 +621,12 @@ window.onload = function() {
         game.mouse(inputEvt)
         if (game.mouseXY.x >0 && game.mouseXY.x<100 && game.mouseXY.y>0 && game.mouseXY.y <100)   {    
             game.removeMenuEL() 
+            game.allScores.sort()
+            game.allScorecopy = game.allScores.slice(-10,game.allScores.length)
+            for(var i = 0;i < 10; i++){
+              game.reverseScore.push(game.allScorecopy.pop())
+              console.log(game.reverseScore)
+            }
             game.drawHS()
             canvas.addEventListener('click', game.returnMenu)
             game.clearcdTimer() 
@@ -657,6 +678,7 @@ window.onload = function() {
     //
     //EndGame
       game.loadEndGame = function() {
+        game.allScores.push(game.score)
         game.score = Math.floor(game.score)
         canvas.removeEventListener('click', game.catJump) 
         game.clearcdTimer() 
