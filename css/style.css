@@ -1,0 +1,11 @@
+h1 {text-align: center}
+#r   {color: red}
+#o   {color:orange}
+#y   {color: #CCCC00}
+#g   {color:green}
+#b   {color:blue}
+#v   {color: purple}
+
+#canvas {padding: 0;
+    margin: auto;
+    display: block;}
